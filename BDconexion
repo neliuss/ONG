@@ -1,0 +1,8 @@
+<?php
+
+$db_host="localhost";
+$db_nombre="ong";//Nombre de la BD en phpmyadmin
+$db_usuario="root";//usuario y contraseña       por defecto apache de xampp
+$db_contra="pass";
+
+?>
