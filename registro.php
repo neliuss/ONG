@@ -2,7 +2,7 @@
 	<html>
 		<head>
 			<meta charset="utf-8">
-			<title>Estilo</title>
+			<title>Benvido</title>
 			<!-- Definimos el estilo--> 
 			<style>
 
@@ -30,7 +30,7 @@
 
 		<body>
 			<h1>Registro</h1>
-				<form name="form1" method="get" action="insert.php">	<!-- Nombramos, definimos método get, e indicamos mediante action, la localización(una URL) donde la información recolectada por el formulario debe enviarse -->
+				<form name="form1" method="get" action="inserta.php">	<!-- Nombramos, definimos método get, e indicamos mediante action, la localización(una URL) donde la información recolectada por el formulario debe enviarse -->
 					<table border="0" align="center">		<!--Definimos alineación y bordes de los datos en el formulario -->
 						<tr>
 							  <td>Nombre</td>
