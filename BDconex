@@ -1,0 +1,8 @@
+<?php
+
+$db_host="localhost";
+$db_nombre="registro";//Nombre de la BD en phpmyadmin
+$db_usuario="root";//usuario y contraseña de usbServer
+$db_contra="usbw";
+
+?>
