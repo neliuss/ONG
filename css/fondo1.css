@@ -1,0 +1,26 @@
+
+body{
+	background-image: url("../fotos/cielo2.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover ;
+}
+/*
+#content{
+
+}
+*/
+#logo{
+	background:rgb(113, 202, 230);
+     background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover ;
+}
+
+#menu ul li:hover{
+	background: #235E3D;
+}
+
+.button-more{
+	background: #235E3D;
+}
