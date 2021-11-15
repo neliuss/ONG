@@ -200,10 +200,31 @@ footer {
 }
 
 #box{
-	width: 60%;
+	width: 70%;
 	float: left;
 	margin-top:40px;
+	margin-right:40px;
+	margin-bottom: 50px;
 }
+	#box p{
+		margin-right:40px;
+
+
+		margin-top: 40px;
+		margin-bottom: 50px;
+	}
+
+#box2{
+	width: 50%;
+	float: left;
+	margin-top:40px;
+	margin-left:40px;
+}
+	#box2 p{
+		margin-top: 10px;
+		margin-bottom: 10px;
+	
+	}
 
 #frmContacto{
 	width: 50%;
