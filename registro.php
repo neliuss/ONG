@@ -34,13 +34,13 @@
 					<table border="0" align="center">		<!--Definimos alineación y bordes de los datos en el formulario -->
 						<tr>
 							  <td>Nombre</td>
-							  <td><label for="nome"></label>
-							  <input type="text" name="nome" id="nome"></td>
+							  <td><label for="nombre"></label>
+							  <input type="text" name="nombre" id="nombre"></td>
 						</tr>
 						<tr>
 							  <td>Apellidos</td>
-							  <td><label for="apelidos"></label>
-							  <input type="text" name="apelidos" id="apelidos"></td>
+							  <td><label for="apellidos"></label>
+							  <input type="text" name="apellidos" id="apellidos"></td>
 						</tr>
 						<tr>
 							  <td>DNI/NIF</td>              <!--Pensar en meterle un select -->
