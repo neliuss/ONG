@@ -13,31 +13,31 @@
                 $conexion = conectar();
 
                 //variable para almacenar el código del artículo
-                $nom = $_GET['nombre'];
-                $apel = $_GET["apellidos"];
-                $dni = $_GET["dni"];
-                $dom = $_GET["domicilio"];
-                $eda = $_GET["edad"];
-             
-                    $consulta="UPDATE socios SET nombre = '$nom', apellidos='$apel', dni='$dni', domicilio='$dom', edad='$eda' WHERE nombre = '$nom', apellidos='$apel', dni='$dni', domicilio='$dom', edad='$eda'"; 
+                $nom = $_POST["nombre"];
+                $apel = $_POST["apellidos"];
+                $dni = $_POST["dni"];
+                $dom = $_POST["domicilio"];
+                $eda = $_POST["edad"];
+          
+                $consulta="UPDATE socios SET nombre = '$nom', apellidos='$apel', dni='$dni', domicilio='$dom', edad='$eda' WHERE nombre = '$nom'"; 
                     
-                    $resultados=mysqli_query($conexion, $consulta);
+                $resultado=mysqli_query($conexion, $consulta);
                     
                     //para informar al usuario de si el registro se ha introducido o no:
-                    if ($resultados==false){
+                if ($resultado==false){
 
-                        echo "Error en la consulta";
+                    echo "Error en la consulta";
                         
-                    }else{
-                            echo "Registro guardado<br><br>";
-                            echo "<table><tr><td>$nom</td></tr>";
-                            echo "<table><tr><td>$apel</td></tr>";
-                            echo "<table><tr><td>$nif</td></tr>";
-                            echo "<table><tr><td>$dom</td></tr>";
-                            echo "<table><tr><td>$ida</td></tr>";	
-                        }
+                }else{
+                    echo "Registro guardado<br><br>";
+                    echo "<table><tr><td>$nom</td></tr>";
+                    echo "<table><tr><td>$apel</td></tr>";
+                    echo "<table><tr><td>$dni</td></tr>";
+                    echo "<table><tr><td>$dom</td></tr>";
+                    echo "<table><tr><td>$eda</td></tr>";                    
+                }
                     
-                    mysqli_close($conexion);
+                mysqli_close($conexion);
 
 			?>
 
