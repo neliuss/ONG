@@ -11,7 +11,7 @@
 include("BDconexion.php");
 //include("accesoBD.php");
 
-//$conexion= accesoBD::conectar();
+$conexion= conectar();
 
 echo 'conexión exitosa';
 
