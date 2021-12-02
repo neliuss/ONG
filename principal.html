@@ -4,54 +4,52 @@
 		<meta charset="utf-8" />
 		<title>Benvido</title>
 
-        <!-- Estilos CSS -->
-      
+        <!-- Estilos CSS --> 
 		<link rel="stylesheet" type="text/css" href="./css/estilo.css" />
 		<link id="tema" rel="stylesheet" type="text/css" href="./css/fondo1.css" />   
 
-	<!--	 jQuery 
-		<script src="https://code.jquery.com/jquery-3.4.1.js"></script>   -->
+	    <!-- jQuery  -->
+		<script src="https://code.jquery.com/jquery-3.4.1.js"></script>  
      
-        <!-- Plugin validacion 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>   -->
+        <!-- Plugin validacion   -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script> 
 
-		<!-- Mis Scripts
-		<script type="text/javascript" src="./js/principal.js"></script>   -->
+		<!-- Mis Scripts-->
+		<script type="text/javascript" src="./js/principal.js"></script>   
 
 	</head>
-	<body>
+	<body>  <!-- Para el cambio de fondo de la página-->
             <div id="selector-tema">
                 <div id="fondo1"></div>
                 <div id="fondo2"></div>        
             </div>
             <section id="global">
-                <header>
+                <header> <!-- Creamos el encabezado -->
                     <div id="logo">
-                        <h1>ONG</h1>
+                        <h1>ONG</h1> <!-- Título del proyecto/empresa/aplicación -->
                     </div>
                     <div class="clearfix"></div>
-                    <nav id="menu">
+                    <nav id="menu"> <!-- menú de las secciones para navegar -->
                         <ul>
                             <li class="activa"><a href="principal.html">Inicio</a></li>
-                            <li><a href="registro.php">Registro</a></li>
-                            <li><a href="modifica.php">Modifica tus datos</a></li>
-                            <li><a href="info.php">Conócenos</a></li> 
                             <li><a href="proyectos.html">Proyectos</a></li>
+                            <li><a href="equipo.html">Conócenos</a></li>
                             <li><a href="ayudas.html">Subvenciones, becas y ayudas</a></li>
-                            
-                            <li><a>Zona admin</a>
+                            <li><a href="registro.php">Registro</a></li>
+                            <li><a href="formBorrar.php">Baja</a></li>
+                            <li><a href="modifica.php">Modifica tus datos</a></li>
+
+                            <li><a>Zona admin</a> <!-- Zona oculta para administradores, excepto contador de visitas -->
                                 <ul>
                                     <li style="float: left;"><a href="admin.php">Listado de socios</a></li>
                                     <li style="float: left;"><a href="admin.php">colaboradores</a></li>
+                                    <li style="float: left;"><a href="vervisitas.php">Visitas</a></li>
                                 </ul>
-                            
-                            </li>
-
-                            
+                            </li>                            
                         </ul>
                     </nav>
                 </header>
-                <section id="content">
+                <section id="content"> <!-- Parrafada de presentación -->
                     <div id="box">
                         <h1>Bienvenido</h1>
                         <p>
@@ -59,56 +57,26 @@
                         </p>
                         <p>
                                 Desde esta ONG, estamos mentalizados a realizar con pequeños gestos, grandes gestas, y con tu ayuda, seremos imparables, únete a nosotros, participa
-                            en talleres, creando entornos sostenibles, aportando ideas, 
+                            en talleres, creando entornos sostenibles, aportando ideas, en definitiva, haciendo del mundo un lugar mejor con tu granito de arena, que junto con muchos otros, acaban 
+                            formando grandes montañas.
                         </p>
                         <p>
                                 Llevamos trabajando por y para la gran familia llamada mundo, desde 2011. Somos una organización sin ánimo de lucro que tiene como objetivo, impulsar la ayuda al prójimo y la 
                             importancia de desarrollar espacios autosostenibles en la medida de los posible, primando siempre la eficiencia energética. Mantenemos un compromiso
                             con el medio ambiente y apoyo a las minorías discriminadas o necesitadas.
                             
-                                Trabajamos desde dos estrategias complementarias: la acción directa (con actividades de formación, talleres de aprendizaje,
-                            enfocada a barrios más subdesarrollados y con nuestro voluntariado) y la investigación y estudio continuo diario.
+                                Trabajamos desde dos estrategias complementarias: la acción directa (con actividades de formación, talleres de aprendizaje, charlas de mentalización...
+                            enfocada a barrios más subdesarrollados y gracias a nuestros voluntarios) y la investigación + estudio continuo diario.
                         </p>
-               <!--         <h2>Contacto</h2>
-                        <form action="" method="POST" id="frmContacto" name="frmContacto">
-                            <label for="nombre">Nombre</label>
-                            <input type="text" name="nombref" id="nombref" />
-                            <label for="apellidos">Apellidos</label>
-                            <input type="text" name="apellidosf" id="apellidosf" />
-                            <label for="email">Email</label>
-                            <input type="email" name="emailf" id="emailf" />
-                            <label for="confEmail">Confirmación email</label>
-                            <input type="email" name="confEmail" id="confEmail" />
-                            <label for="date">Fecha de nacimiento</label>
-                            <input type="text" name="fechaf" id="fechaf" />
-                            <label for="cp">CP</label>
-                            <input type="text" name="cp" id="cp" />
-                             <fieldset>
-                                <legend>Seleccione áreas de interés</legend>
-                                <label for="diseno">
-                                    <input id="diseno" name="intereses[]" value="diseno" type="checkbox" />
-                                    Diseño
-                                </label>
-                                <label for="programacion">
-                                    <input id="programacion" name="intereses[]" value="programacion" type="checkbox" />
-                                    Programación
-                                </label>
-                                <label for="otros">
-                                    <input id="otros" name="otros" type="checkbox" />
-                                    Otros
-                                </label>
-                                <div id="otrosIntereses">
-                                    <label for="otro">Por favor indica cuáles
-                                        <input id="otro" name="otro" type="text" />
-                                    </label>
-                                </div>
-                            </fieldset>  
-            
-                            <input type="submit" id="env" value="Enviar" name="enviar" />
-                            cambiando submit por button, no reinicia la página -->
-                        </form>
+                        <p>
+                           Con tu aportación, por muy pequeña que parezca, harás realidad el sueño de muchas familias desfavorecidas, hacer llegar a sus manos, los medios para
+                           poder salir adelante.
+                           La ayuda que puedas aportar, tiene un gran abanico de formas, desde la más básica, una aportación económica, hasta un voluntariado muy activo, pasando por compartir tus conocimientos
+                           con quienes te rodean, desde enseñar en talleres a personas en régimen de exclusión, que no tuvieron la suerte de poder escolarizarse, o abandonaron sus estudios a temprana edad, a acompañar 
+                           a personas mayores en residencias y centros de día. 
+                        </p>
                     </div>
-                    <aside id="sidebar">
+                    <aside id="sidebar"> <!-- Creamos una especie de barra lateral pa los enlaces y redirecciones -->
                         <div id="about">
                             <h4><span>¿Quieres ayudar?</span></h4>
                             <img src="./fotos/manos.jpg" />

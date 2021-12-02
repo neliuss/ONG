@@ -5,14 +5,14 @@
 		<title> Documento</title>
 	</head>
 
-	<body>
+	<body style = "margin-top:0; background-color:powderblue">
 
 			<?php	
 
                 require("BDconexion.php");
                 $conexion = conectar();
 
-                //variable para almacenar el código del artículo
+                //variable para almacenar los datos
                 $nom = $_POST["nombre"];
                 $apel = $_POST["apellidos"];
                 $dni = $_POST["dni"];
@@ -38,12 +38,17 @@
                     echo "<table><tr><td>$dom</td></tr>";
                     echo "<table><tr><td>$eda</td></tr>";
                     echo "<table><tr><td>$tel</td></tr>";
-                    echo "<table><tr><td>$mail</td></tr>";                    
+                    echo "<table><tr><td>$mail</td></tr>";              
                 }
                     
                 mysqli_close($conexion);
 
 			?>
+        <table border="0" align="left">		
+			<tr>
+				<td align="center"><input type="button" name="volver" id="volver" value="Menú inicio" onclick="location.href='principal.html';" ></td>
+			</tr>
+		</table>
 
 	</body>
 </html>

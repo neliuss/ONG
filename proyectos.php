@@ -1,3 +1,7 @@
+<?php
+    // Incluimos contador de visitas
+    include_once "contador.php";
+?>
 <!DOCTYPE HTML>
 <html lang="es">
 
@@ -46,6 +50,7 @@
                                     <option value="0" selected>Seleccionar Proyecto</option>
                                     <option text="ecoaldea" value="1">Ecoaldea</option>
                                     <option text="maltrato" value="2">Víctimas maltrato</option>
+									<option text="maltrato" value="2">Cuidado mayores</option>
                                    <!--         <option value="3"></option>
                                             <option value="4"></option>     -->
                                 </select></td>
@@ -81,9 +86,7 @@
                                     <input type="checkbox" name="ayuda" id="econ" value="1" checked>Económica
                                     <br>
                                     <input type="checkbox" name="ayuda"  id="voluntariado" value="2">Voluntariado
-							  <td><span style="color:#FF0000" class="error">
-                                    <p id="ayuda_error"></p>
-                                </span></td>
+							  <td><span style="color:#FF0000" class="error"><p id="ayuda_error"></p></span></td>
 						</tr>
 						<tr>
 							  <td align="center"><button type="button" name="enviar" id="enviar" >Colabora</button></td>
@@ -93,21 +96,50 @@
 					</table>
 				</form>
 			</div>
+			<div id="exito" style="display:none">
+				<table border="0" align="center">	
+					<tr>
+						<td>
+							</span>Sus datos han sido recibidos con éxito.</td>
+						</td>
+					</tr>
+					<tr>
+						<td align="center"><input type="button" name="volver" id="volver" value="Menú inicio" onclick="location.href='principal.html';" ></td>
+					</tr>
+				</table>	
+			</div>
+			<div id="proy" style="display:none">
+				<table border="0" align="center">	
+					<tr>
+						<td>
+							</span>Se ha producido un error durante el envío de datos. Compruebe que no está asociado a ese proyecto.</td>
+						</td>
+						<td>
+							</span>  <h4><a href="mailto:alexpernas@gmail.com" style="background-color: limegreen; color: whitesmoke">Escríbenos si tienes alguna duda</a></h4></td>
+						</td>
+					</tr>
+					<tr>
+						<td align="center"><input type="button" name="volver" id="volver" value="Menú inicio" onclick="location.href='principal.html';" ></td>
+					</tr>
+				</table>	
+			</div>
+			<div id="fracaso" style="display:none">
+				<table border="0" align="center">	
+					<tr>
+						<td>
+							</span> Se ha producido un error durante el envío de datos. Compruebe si ya figura entre nuestros socios.</td>
+						</td>
+						<td>
+							</span>  <h4><a href="registro.php">Regístrate</a></h4></td>
+						</td>
+					</tr>
+					<tr>
+						<td align="center"><input type="button" name="volver" id="volver" value="Menú inicio" onclick="location.href='principal.html';" ></td>
+					</tr>
+				</table>	
+			</div>
 
-		<div id="exito" style="display:none">
-			<table border="0" align="center">	
-				<tr>
-					<td>
-						</span>Sus datos han sido recibidos con éxito.</td>
-					</td>
-				</tr>
-				<tr>
-					<td align="center"><input type="button" name="volver" id="volver" value="Menú inicio" onclick="location.href='principal.html';" ></td>
-				</tr>	
-        </div>
-        <div id="fracaso" style="display:none">
-            Se ha producido un error durante el envío de datos.
-        </div>
+			
 
 <script type="text/javascript">
 
@@ -161,7 +193,7 @@ function validaForm(){
 			console.log('Dni correcto');
 		}
 	}else{
-		var dniError = 'Dni erroneo, formato no válido';
+		var dniError = 'Dni erróneo, formato no válido';
 		document.getElementById("dni_error").innerHTML = dniError;
 		return false;
 	}
@@ -191,7 +223,7 @@ $(document).ready( function() {   // Esta parte del código se ejecutará autom�
 			var indice = document.getElementById('nombreProyecto').selectedIndex;
 			var nomProyecto = document.getElementById('nombreProyecto').options[indice].text;
 			
-			var dni = $("#dni").val();
+			var dni = $("#dni").val().toUpperCase();
 			var tipo= document.getElementById('tipo').options[document.getElementById('tipo').selectedIndex].text;
 			
 			
@@ -221,20 +253,36 @@ $(document).ready( function() {   // Esta parte del código se ejecutará autom�
 			})
 
 			.done(function (res) {
-			//	console.log('res', res);
-				//    $.get("inserta.php", $("#form1").serialize(), function(res){
-				$("#formulario").fadeOut("slow");   // Hacemos desaparecer el div "formulario" con un efecto fadeOut lento.
-				
-				if(res.indexOf('Registro guardado')){
-					$("#exito").delay(500).fadeIn("slow");      // Si hemos tenido éxito, hacemos aparecer el div "exito" con un efecto fadeIn lento tras un delay de 0,5 segundos.
-				} else {
-					$("#fracaso").delay(500).fadeIn("slow");    // Si no, lo mismo, pero haremos aparecer el div "fracaso"
-				}
+				console.log('res', res.split('body'));
+				var com=res.split('body');
+			//	var com2=com.split('<body>');console.log('res2', com2);
+			
+					if(com[1].includes('Registro guardado')){
+
+						$("#formulario").fadeOut("slow");			// Hacemos desaparecer el div "formulario" con un efecto fadeOut lento.
+						$("#exito").delay(500).fadeIn("slow");      // Si hemos tenido éxito, hacemos aparecer el div "exito" con un efecto fadeIn lento tras un delay de 0,5 segundos.
+					
+					}
+					if(com[1].includes('no está registrado')){
+
+						$("#formulario").fadeOut("slow");
+						$("#fracaso").delay(500).fadeIn("slow");
+
+					}
+					if(com[1].includes('proyecto')){
+
+						$("#formulario").fadeOut("slow");			
+						$("#proy").delay(500).fadeIn("slow");      
+
+					}
+					
 			})
 
 			.fail(function (res) {
-                console.log(msg);
+                console.log(res.split(','));
+				if(res.indexOf('Error')){
                 alert("Error en la llamada");
+				}
             });    
         }
     });

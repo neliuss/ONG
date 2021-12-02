@@ -9,6 +9,13 @@
 
 	<link rel="stylesheet" type="text/css" href="./css/estilo.css" />
 	<link id="tema" rel="stylesheet" type="text/css" href="./css/fondo1.css" />
+	
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>	<!--jquery-->
+	
+	<!-- Plugin validacion   -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+	<script type="text/javascript" src="./css/principal.js"></script>
+
 
 	</head>
 
@@ -22,11 +29,13 @@
 				<nav id="menu">
 					<ul>
 						<li><a href="principal.html">Inicio</a></li>
-						<li><a href="registro.php">Registro</a></li>
-						<li><a href="modifica.php">Modifica tus datos</a></li>
-						<li><a href="info.php">Conócenos</a></li>
 						<li><a href="proyectos.html">Proyectos</a></li>
+						<li><a href="equipo.html">Conócenos</a></li>
 						<li class="activa"><a href="ayudas.html">Subvenciones, becas y ayudas</a></li>
+						<li><a href="registro.php">Registro</a></li>
+						<li><a href="formBorrar.php">Baja</a></li>
+						<li><a href="modifica.php">Modifica tus datos</a></li>
+
 						<li><a>Zona admin</a>
 							<ul>
 								<li style="float: left;"><a href="admin.php">Listado de socios</a></li>
@@ -43,28 +52,34 @@
 						Existen numerosas subvenciones y ayudas a diferentes organizaciones, colectivos y asociaciones, tanto en ámbitos
 						locales, como nacionales y europeos.
 						Si estás interesado de información básica para desarrollar alguna función social de ayuda a necesitados, puedes
-						hacerlo en <a href="http://www.asociaciones.org/index.php?option=com_content&view=article&id=603&Itemid=60">el siguiente enlace</a>
+						hacerlo en <a href="http://www.asociaciones.org/index.php?option=com_content&view=article&id=603&Itemid=60" target="_blank">el siguiente enlace</a> <!-- Con  target="_blank" abre en nueva pestaña, en vez de cerrar la nuestra de la ong-->
 					</p>	
 <!--	 			</div>
 			<div id="box2">	-->
 					<h2>Tipos de ayudas</h2>
 					<p>Buscador de ayudas del Ministerio de Sanidad, Consumo y Bienestar 
-						Social.<a href="https://www.mscbs.gob.es/buscador/iniciar.do">ver</a></p>
+						Social.<a href="https://www.mscbs.gob.es/buscador/iniciar.do" target="_blank">ver</a></p>
 					<p id="p1">
 						Acción contra el hambre. VIVES Proyecto. Apoyo a la estrategia de emprendimiento y empleo joven (EEEJ), del Ministerio de Empleo y 
-						Seguridad Social.<a href="https://www.mites.gob.es/ES/estrategia-empleo-joven/logos/planes/Plan_Actuacion_VIVES_PROYECTO_361.pdf">PDF</a>
+						Seguridad Social.<a href="https://www.mites.gob.es/ES/estrategia-empleo-joven/logos/planes/Plan_Actuacion_VIVES_PROYECTO_361.pdf" target="_blank">PDF</a>
 					</p>
 					<p>
 						Becas Google en colaboración el SEPE, Fundae y ONGs locales para favorecer la empleabilidad.<a
-							href="https://www.sepe.es/HomeSepe/que-es-el-sepe/comunicacion-institucional/noticias/detalle-noticia.html?folder=/2021/Marzo/&detail=Becas-Google--en-colaboraci-n-el-SEPE--Fundae-y-ONGs-locales-para-favorecer-la-empleabilidad">ver</a>
+							href="https://www.sepe.es/HomeSepe/que-es-el-sepe/comunicacion-institucional/noticias/detalle-noticia.html?folder=/2021/Marzo/&detail=Becas-Google--en-colaboraci-n-el-SEPE--Fundae-y-ONGs-locales-para-favorecer-la-empleabilidad" target="_blank">ver</a>
 					</p>
 					<p>
-						Practicas en organismos internacionales.<a href="https://www.google.com/url?client=internal-element-cse&cx=016584004679075736231:h3l4ph2ll6q&q=https://www.sepe.es/SiteSepe/contenidos/personas/encontrar_empleo/encontrar_empleo_europa/pdf/Practicas_2019.pdf&sa=U&ved=2ahUKEwjb8Jegmpj0AhVGCxoKHWEyBLgQFnoECAAQAQ&usg=AOvVaw2wNT6E6xrpJjI-yRhiZT2x">PDF</a>
+						Prácticas en organismos internacionales.<a href="https://www.google.com/url?client=internal-element-cse&cx=016584004679075736231:h3l4ph2ll6q&q=https://www.sepe.es/SiteSepe/contenidos/personas/encontrar_empleo/encontrar_empleo_europa/pdf/Practicas_2019.pdf&sa=U&ved=2ahUKEwjb8Jegmpj0AhVGCxoKHWEyBLgQFnoECAAQAQ&usg=AOvVaw2wNT6E6xrpJjI-yRhiZT2x" target="_blank">PDF</a>
 					</p>
+
+					<h2>Voluntariado</h2>
+					<p>¿Te interesa el voluntariado? Hoy en día, tenemos a nuestra disposición la Ley del Voluntariado, la cual tiene por objeto reconocer, facilitar y
+					promover la acción de los ciudadanos en servicios voluntarios y señalar las condiciones jurídicas bajo las cuales tales actividades se realizan dentro del territorio nacional.<a href="https://www.boe.es/eli/es-ct/l/2015/07/30/25" target="_blank" >Ley 25/2015, de 30 de julio, del voluntariado y de fomento del asociacionismo.</a></p>
+					<p id="p1">
 				</div>	
 				<aside id="sidebar">
 					<div id="about">
 						<h4><span>¿Quieres ayudar?</span></h4>
+						<img src="./fotos/manos.jpg" />
 						<a href="registro.php">Registro</a>
 						<p>Un gran cambio comienza por un pequeño gesto.</p>
 					</div>	

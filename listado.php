@@ -1,3 +1,7 @@
+<?php
+    // Incluimos contador de visitas
+    include_once "contador.php";
+?>
 <!doctype html>
 <html>
 	<head>
@@ -45,13 +49,15 @@
                                     <td> <center><?php echo $fila['edad']; ?></center></td>
                                     <td> <center><?php echo $fila['telefono']; ?></center></td>
                                     <td> <center><?php echo $fila['correo']; ?></center></td>
+                                    
                                 </tr>
                                 <?php
                                             }	
                                         mysqli_close($conexion);     	
                                 ?>
                             </tbody>
-                        </table>                 
+                        </table> 
+                        <td align="center"><input type="button" name="volver" id="volver" value="Menú inicio" onclick="location.href='principal.html'" ></td>                
                     </div>
                 </div>  
             </div>    

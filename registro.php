@@ -1,3 +1,7 @@
+<?php
+    // Incluimos contador de visitas
+    include_once "contador.php";
+?>
 <!DOCTYPE HTML>
 <html lang="es">
 
@@ -88,28 +92,60 @@
 						
 				
 						<tr>
-							  <td align="center"><button type="button" name="enviar" id="enviar" >Ingresar</button></td>
+							  <td align="center"><button type="button" name="enviar" id="enviar" >Registrar</button></td>
 							  <td align="center"><input type="reset" name="Borrar" id="Borrar" value="Borrar"></td>
-							  <td align="center"><input type="button" name="volver" id="volver" value="Menú inicio" onclick="location.href='principal.html';" ></td>
+							  <td align="center"><input type="button" name="volver" id="volver" value="Menú inicio" onclick="location.href='principal.html'" ></td>
 						</tr>
 					</table>
 				</form>
 			</div>
 
-		<div id="exito" style="display:none">
-			<table border="0" align="center">	
-				<tr>
-					<td>
-						</span>Sus datos han sido recibidos con éxito.</td>
-					</td>
-				</tr>
-				<tr>
-					<td align="center"><input type="button" name="volver" id="volver" value="Menú inicio" onclick="location.href='principal.html';" ></td>
-				</tr>	
-        </div>
-        <div id="fracaso" style="display:none">
-            Se ha producido un error durante el envío de datos.
-        </div>
+			<div id="exito" style="display:none">
+				<table border="0" align="center">	
+					<tr>
+						<td>
+							</span>Sus datos han sido registrados con éxito.</td>
+						</td>
+					</tr>
+					<tr>
+						<td align="center"><input type="button" name="volver" id="volver" value="Menú inicio" onclick="location.href='principal.html';" ></td>
+					</tr>
+				</table>	
+			</div>
+
+			<div id="fracaso" style="display:none">
+				<table border="0" align="center">	
+					<tr>
+						<td>
+							</span>Se ha producido un error durante el envío de datos.</td>
+						</td>
+						<td>
+							</span>  <h4><a href="mailto:alexpernas@gmail.com" style="background-color: limegreen; color: whitesmoke">Escríbenos si tienes alguna duda</a></h4></td>
+						</td>
+					</tr>
+					<tr>
+						<td align="center"><input type="button" name="volver" id="volver" value="Menú inicio" onclick="location.href='principal.html';" ></td>
+					</tr>
+				</table>	
+			</div>
+
+			<div id="bd" style="display:none">
+				<table border="0" align="center">	
+					<tr>
+						<td>
+							</span> Se ha producido un error durante el envío de datos. Compruebe si ya figura entre nuestros socios.</td>
+						</td>
+						<td>
+							</span>  <h4><a href="registro.php">Regístrate</a></h4></td>
+						</td>
+					</tr>
+					<tr>
+						<td align="center"><input type="button" name="volver" id="volver" value="Menú inicio" onclick="location.href='principal.html';" ></td>
+					</tr>
+				</table>	
+			</div>
+
+			
 
 <script type="text/javascript">
 
@@ -132,6 +168,13 @@ function validaForm(){
 
     if($("#dni").val().trim() == ""){
         var dniError = "Campo DNI debe rellenarse.";
+		document.getElementById("dni_error").innerHTML = dniError;
+        return false;
+    }
+
+	var comminus = $("#dni").val().slice(-1); //Comprobamos última letra con slice(-1)
+	if(comminus == comminus.toLowerCase()){
+        var dniError = "Letra del DNI debe ser mayúscula.";
 		document.getElementById("dni_error").innerHTML = dniError;
         return false;
     }
@@ -160,14 +203,14 @@ function validaForm(){
 		letra='TRWAGMYFPDXBNJZSQVHLCKET';
 		letra=letra.substring(numero,numero+1);
 		if (letra!=letr.toUpperCase()) {
-			var dniError = 'Dni erroneo, la letra del NIF no se corresponde';
+			var dniError = 'Dni erróneo, la letra del NIF no se corresponde';
 			document.getElementById("dni_error").innerHTML = dniError;
 			return false;
 		}else{	
 			console.log('Dni correcto');
 		}
 	}else{
-		var dniError = 'Dni erroneo, formato no válido';
+		var dniError = 'Dni erróneo, formato no válido';
 		document.getElementById("dni_error").innerHTML = dniError;
 		return false;
 	}
@@ -200,7 +243,7 @@ $(document).ready( function() {   // Esta parte del código se ejecutará autom�
 
 			var nombre = $("#nombre").val();
 			var apellidos = $("#apellidos").val();
-			var dni = $("#dni").val();
+			var dni = $("#dni").val().toUpperCase();		//lo guardamos en la BD con la última mayúscula, en caso que no lo escribiera el o la socia
 			var domicilio= $("#domicilio").val();
 			var edad= $("#edad").val();
 			var telefono = $("#telef").val();
@@ -221,14 +264,28 @@ $(document).ready( function() {   // Esta parte del código se ejecutará autom�
 			})
 
 			.done(function (res) {
-				console.log('res', res);
-				//    $.get("inserta.php", $("#form1").serialize(), function(res){
-				$("#formulario").fadeOut("slow");   // Hacemos desaparecer el div "formulario" con un efecto fadeOut lento.
-				
-				if(res.indexOf('Registro guardado')){
+				console.log('res', res.split('<body>'));
+				var com=res.split('body');
+
+				if(com[1].includes('Registro guardado')){
+
+					$("#formulario").fadeOut("slow");			// Hacemos desaparecer el div "formulario" con un efecto fadeOut lento.
 					$("#exito").delay(500).fadeIn("slow");      // Si hemos tenido éxito, hacemos aparecer el div "exito" con un efecto fadeIn lento tras un delay de 0,5 segundos.
-				} else {
-					$("#fracaso").delay(500).fadeIn("slow");    // Si no, lo mismo, pero haremos aparecer el div "fracaso"
+					$("#bd").hide();
+				}
+				
+				if(com[1].includes('figura en nuestra base de datos')){
+
+					$("#formulario").fadeOut("slow");			
+					$("#bd").delay(500).fadeIn("slow");      
+
+				}
+
+				if(com[1].includes('Eror')){
+
+					$("#formulario").fadeOut("slow");
+					$("#fracaso").delay(500).fadeIn("slow");
+
 				}
 			})
 

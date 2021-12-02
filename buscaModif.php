@@ -1,3 +1,7 @@
+<?php
+    // Incluimos contador de visitas
+    include_once "contador.php";
+?>
 <!doctype html>
 <html>
 
@@ -7,22 +11,19 @@
         <?php
 
         $labusqueda = trim($_POST["busca"]);
-    //    echo '$labusqueda';
-        //con $_SERVER le indicamos a que pagina del servidor tiene que llamar, con php_self, se llama a sí misma
-    //    $mipag = $_SERVER["PHP_SELF"];
+     //   echo $labusqueda;
 
         //si la variable mibusqueda  es diferente a nulo, que ejecute la consulta, sino, que me muestre el formulario en la propia página (con concatenaciones)
         if (isset($labusqueda)){
-        ejecuta_consulta($labusqueda);
+            ejecuta_consulta($labusqueda);
         } else {
             echo "Debe especificar un nombre a buscar";
             exit;
         }
         ?>
-        
     </head>
 
-    <body>
+    <body style = "margin-top:0; background-color:powderblue">
 
         <?php
             //Lo pegamos antes de head, para asegurarse que lo lee antes 
@@ -31,19 +32,8 @@
                 //llamamos a datosconex.php, así nos ahorramos insertar código cada página
                 require("BDconexion.php");
 
-//                $conexion=conectar();
-
-                //Variable para el resultado de la búsqueda
-                $texto = '';
                 //Variable para el número de registros encontrados
                 $registro = '';  
-
-                //para filtrar en la bd, utilizaremos la cláusula where: elegimos nombre, pero podríamos elegir nif o cualquier parámetro				
- //               $consulta = "SELECT * FROM socios WHERE nombre LIKE'%$labusqueda%'"; //Ojo 
-
-//                $resultados = mysqli_query($conexion, $consulta);
-
-                $entero = 0;
 
                 // Si hay información para buscar, se abre la conexión
                 $conexion=conectar();
@@ -110,7 +100,6 @@
                                     <td width='100%' colspan='2'>
                                     <p align='center'>
                                     <input type='submit' value='Actualiza datos' name='actualiza'></td>
-                                    <button type='submit' formaction='borrar.php'>Borra registro</button>
                                 </tr>
                                 </form>
                             </table>

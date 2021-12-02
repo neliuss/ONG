@@ -1,3 +1,8 @@
+<?php
+    // Incluimos contador de visitas
+    include_once "contador.php";
+?>
+
 <!doctype html>
 <html>
 	<head>
@@ -12,7 +17,7 @@
                     <div class='table100 ver1 m-b-110'>    
                         <table data-vertable='ver1'>
                             <br>
-                                <h2 >TABLA DE SOCIOS REGISTRADOS</h2>
+                                <h2 >TABLA DE PROYECTOS ASOCIADOS </h2>
                             <br>
                             <thead>
                                 <tr class='row100 head'> 
@@ -35,24 +40,16 @@
                                         
                                         $conexion=conectar();
 
+                                        //Le hago dos consultas previas a la base, porque a veces no entraba a la primera el inner join
                                         $consulta_socios="SELECT * from socios order by dni";
                                         $consulta_proyectos="SELECT * from proyectos order by dni";
 
-                                        $consulta="SELECT * FROM socios
-                                        INNER JOIN proyectos 
-                                        ON socios.dni = proyectos.dni";
-                                        
+                                        $consulta="SELECT * FROM socios INNER JOIN proyectos ON socios.dni = proyectos.dni";
 
-
-
-                                        
                                         $resultados=mysqli_query($conexion, $consulta);
-
-                                        
                                         if($resultados) {
-
                                         
-                                        while($fila = mysqli_fetch_assoc($resultados)) {
+                                            while($fila = mysqli_fetch_assoc($resultados)) {
                                 ?>
 
                                 <tr class='row100'>
@@ -72,7 +69,8 @@
                                         mysqli_close($conexion);     	
                                 ?>
                             </tbody>
-                        </table>                 
+                        </table>
+                        <td align="center"><input type="button" name="volver" id="volver" value="Menú inicio" onclick="location.href='principal.html'" ></td>                    
                     </div>
                 </div>  
             </div>    
